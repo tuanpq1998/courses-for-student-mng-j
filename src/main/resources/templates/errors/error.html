@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="'Error'" />
+</head>
+<body>
+<h2>Error</h2>
+<p th:text="${'Code number: ' + errorCode}"/>
+<hr/>
+<p>
+<a th:href="@{/}">Go home</a> 
+</body>
+</html>

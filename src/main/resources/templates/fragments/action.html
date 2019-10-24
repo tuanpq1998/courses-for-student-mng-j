@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body>
+
+<div th:fragment="adminAction(id)" th:remove="tag">
+<a th:href="@{/admin/edit-course(id=${id})}" class="input profile-btn" style="margin: 0;padding: 5px">Edit</a>
+<a th:href="@{/admin/view-course(id=${id})}" class="input profile-btn" style="margin: 0;padding: 5px">View</a>
+<form action="#" th:action="@{/admin/delete-course}" method="post" style="vertical-align: top; display: inline-block;">
+<input type="hidden" name="id" th:value="${id}" />
+<input type="submit" class="input profile-btn" value="Delete" style="margin: 0;padding: 5px" />
+</form>
+</div>
+
+<div th:fragment="studentAction(id)" th:remove="tag">
+<form action="#" th:action="@{/student/join-course}" method="post">
+<input type="hidden" name="id" th:value="${id}" />
+<input type="submit" class="input profile-btn" value="Join" style="margin: 0;padding: 5px" />
+</form>
+</div>
+
+</body>

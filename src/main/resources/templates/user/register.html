@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<inside-head th:replace="fragments/general.html :: head(title='Login')" />
+</head>
+
+<body>
+	<header></header>
+	<section id="section">
+		<div class="container">
+			<div class="head">Register</div>
+			<div class="content">
+				<form id="register-form" class="form" method="post" action="#" th:action="@{/register}"
+					th:object="${newUser}">
+
+					<div class="alert" th:if="${#fields.hasErrors('*')}">
+						<p th:each="err : ${#fields.errors('*')}" th:text="${'- ' + err}"></p>
+					</div>
+
+					<input class="input" type="text" placeholder="Username" size="45" th:field="*{username}" />
+					<input class="input" type="text" placeholder="First name" size="45" th:field="*{firstName}" />
+					<input class="input" type="text" placeholder="Last name" size="45" th:field="*{lastName}" />
+					<input class="input" type="email" placeholder="Email" size="45" th:field="*{email}" />
+					<input class="input" type="password" placeholder="Password" size="45" th:field="*{password}" />
+					<input class="input" type="password" placeholder="Re-password" size="45" th:field="*{rePassword}" />
+
+					<input class="input" id="login" type="submit" value="Submit" size="50"/>
+				</form>
+				<a th:href="@{/login}" class="link">Click here to Login</a>
+			</div>
+
+		</div>
+
+	</section>
+
+</body>

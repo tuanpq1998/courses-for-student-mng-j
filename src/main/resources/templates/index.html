@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="'Welcome!'" />
+</head>
+<body>
+	<h2>Welcome!</h2>
+
+	<hr />
+	<div sec:authorize="isAuthenticated()">
+		<p>Welcome, <span sec:authentication="name">Username</span></p>
+		<p><a th:href="@{/course}">Go to course</a></p>
+		
+	<form th:action="@{/logout}" method="post">
+		<button id="logout-btn" type="submit">Logout</button>
+	</form>	   
+</div>
+	
+<p sec:authorize="!isAuthenticated()">
+		<a th:href="@{/login}">Login</a>
+	</p>
+</body>
+</html>

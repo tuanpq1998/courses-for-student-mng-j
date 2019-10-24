@@ -1,0 +1,12 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="alert" th:remove="tag">
+		<!--  alert -->
+		<div class="alert" th:if="${param.error!=null}">Invalid username
+			or password.</div>
+		<div class="info" th:if="${param.success!=null}">Registered!</div>
+		<div class="info" th:if="${param.logout!=null}">Logout done!</div>
+	</div>
+</body>

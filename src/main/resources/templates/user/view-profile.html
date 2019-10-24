@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<inside-head
+	th:replace="fragments/general.html :: head(title='View profile')" />
+<link th:href="@{/css/profile.css}" rel="stylesheet" />
+</head>
+<body>
+	<header th:replace="fragments/general.html :: header" />
+
+	<section id="profile-section">
+		<aside th:replace="fragments/general.html :: aside" />
+		<article id="article">
+			<div id="heading">
+				<h1>Profile</h1>
+			</div>
+
+			<div class="container" id="profile-container">
+				<div class="content" style="padding-top: 20px;">
+
+						<label class="label" for="username">Username: </label> 
+						<input class="input profile-input" type="text" th:value="${user.username}"
+							size="50" disabled="disabled" /> 
+							
+						<label class="label" for="first name">First name: </label> 
+						<input class="input profile-input" type="text" disabled="disabled" 
+							th:value="${user.firstName}" size="50" /> 
+							
+						<label class="label" for="last name">Last name: </label> 
+						<input class="input profile-input" type="text" disabled="disabled" 
+							th:value="${user.lastName}" size="50" /> 
+							
+						<label class="label" for="email">Email: </label> 
+						<input class="input profile-input" type="text" disabled="disabled" 
+							th:value="${user.email}" size="50" /> 
+							
+				<a th:href="@{/profile/edit}" class="input profile-btn">Edit</a>
+				<a th:href="@{/profile/change-password}" class="input profile-btn">Change password</a>
+				</div>
+			</div>
+		</article>
+
+	</section>
+<script defer="defer" th:src="@{/js/app.js}"></script></body>
+</html>

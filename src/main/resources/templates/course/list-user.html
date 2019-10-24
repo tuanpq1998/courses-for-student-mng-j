@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:with="title=${'List students of course ' + courseName}">
+<inside-head
+	th:replace="fragments/general.html :: head(title=${title})" />
+<link th:href="@{/css/profile.css}" rel="stylesheet" />
+</head>
+<body>
+	<header th:replace="fragments/general.html :: header" />
+
+	<section id="content-section">
+		<aside th:replace="fragments/general.html :: aside" />
+		<article id="article">
+			<div id="heading">
+				<h1>List users</h1>
+			</div>
+			<div class="container" id="profile-container">
+				<div class="head" th:text="${'List of course ' + courseName}" />
+				<div class="content">
+					<table id="table-content"
+						th:if="${users != null && users.size() > 0}">
+						<tr>
+							<th>Username</th>
+							<th>Full name</th>
+							<th>Email</th>
+						</tr>
+
+						<tr th:each="user : ${users}">
+							<td th:text="${user.username}" />
+							<td th:text="${user.firstName + ' ' + user.lastName}" />
+							<td th:text="${user.email}" />
+						</tr>
+
+					</table>
+					<p id="empty-caption" th:unless="${users != null 
+						&& users.size() > 0}">(0 student)</p>
+					<a th:href="@{/course}">Go back</a>
+				</div>
+			</div>
+		</article>
+	</section>
+<script defer="defer" th:src="@{/js/app.js}"></script></body>
+</html>

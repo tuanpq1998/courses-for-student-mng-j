@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:fragment="head((title)" th:remove="tag">
+<meta charset="UTF-8" />
+<title th:text="${title}" />
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+	rel="stylesheet" />
+</head>
+
+<body>
+	<header id="header" th:fragment="header">
+		<div class="left"><a th:href="@{/course}">Course System Management</a></div>
+		<div class="right" id="menu">
+			<p>
+				<i class="fa fa-user" aria-hidden="true"></i> <i
+					class="fa fa-caret-down" aria-hidden="true"></i>
+			</p>
+			<div id="menu-content">
+				<ul>
+					<li><a th:href="@{/profile}"><i class="fa fa-user" aria-hidden="true"></i>
+							User Profile</a></li>
+					<li>
+						<form th:action="@{/logout}" method="post">
+							<button id="logout-btn" type="submit"><i class="fa fa-sign-out"
+							aria-hidden="true"></i> Logout</button>
+						</form>	
+							</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+
+	<aside id="aside" th:fragment="aside">
+		<div sec:authorize="hasRole('ADMIN')" class="aside-child" id="view-contents">
+			<a th:href="@{/admin/create-course}">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create new course
+			</a>
+		</div>
+		<div class="aside-child">
+			<a th:href="@{/profile/change-password}"><i class="fa fa-pencil-square-o"
+				aria-hidden="true"></i> Change password</a>
+		</div>
+	</aside>
+
+</body>
+</html>

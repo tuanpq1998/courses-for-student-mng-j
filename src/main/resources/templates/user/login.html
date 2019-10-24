@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<inside-head th:replace="fragments/general.html :: head(title='Login')" />
+</head>
+
+<body>
+	<header></header>
+	<section id="section">
+		<div class="container">
+			<div class="head">Please Sign In</div>
+			<div class="content">
+			<div th:replace="fragments/alert-user.html :: alert" />
+				<form id="login-form" class="form" method="post" th:action="@{login}">
+					<input class="input" type="text" name="username" placeholder="Username"
+						value="" size="45" /> 
+						<input class="input" type="password"
+						name="password" placeholder="Password" size="45" /> 
+					<input class="input" id="login" type="submit" value="Login" size="45" />
+				</form>
+				<a th:href="@{/register}" class="link">Click here to Register</a>
+			</div>
+
+		</div>
+
+	</section>
+
+</body>
